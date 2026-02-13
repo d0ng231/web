@@ -3,9 +3,14 @@ layout: page
 ---
 
 {% if page.image and page.headerImage %}
-    {% assign first_char = page.image | slice: 0 %}
     {% assign first_two = page.image | slice: 0, 2 %}
-    {% capture image_src %}{% if page.image contains '://' or first_two == '//' %}{{ page.image }}{% else %}{{ site.url }}{{ page.image }}{% endif %}{% endcapture %}
+    {% capture image_src %}
+        {% if page.image contains '://' or first_two == '//' %}
+            {{ page.image }}
+        {% else %}
+            {{ site.url }}{{ page.image }}
+        {% endif %}
+    {% endcapture %}
     <img class="title-image" src="{{ image_src | strip }}" alt="{{ page.title }}">
 {% endif %}
 
